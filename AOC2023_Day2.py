@@ -1,6 +1,5 @@
 """ ADVENT OF CODE 2023 """
 import pathlib
-import re
 
 # Day 2
 
