@@ -103,6 +103,10 @@ def day9(file, part2=False):
     predictions = []
     for history in data:
         sequences = []
+        # Part 2 works on same logic on reversed part 1 sequence 
+        if part2:
+            history.reverse()
+
         diff = history
         sequences.append(history)
         while True:
@@ -112,16 +116,12 @@ def day9(file, part2=False):
             # Break the loop if all differences are zero
             if is_all_null(diff):
                 break
-        sequences.reverse()
-        if part2:
-            # Calculate and append the prediction using part 2 logic
-            predictions.append(get_prev(get_firsts(sequences)))
-        else:
-            # Calculate and append the prediction using part 1 logic
-            predictions.append(get_next(get_lasts(sequences)))
+        # add next to predictions
+        predictions.append(get_next(get_lasts(sequences)))
+
     print(sum(predictions))
 
-# part 2
+# Unnecesssary functions if you just use reversed sequence for part 2
 
 def get_firsts(lst: list) -> list:
     """
